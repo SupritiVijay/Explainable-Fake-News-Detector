@@ -14,35 +14,36 @@ Our model achieves a very high accuracy on the dataset. Thus, we examine the sli
 ### AUC Curve: 
 ![AUC Curve](./images/AUC.png)
 
-### Interpretability Pipeline
+## Interpretability Pipeline
 
 * In order to examine whether the model is able to infer the context of the sentence and classify it accurately, we colorcode words based on significance to each of the output categories.
 
 * We calculate this significance by replacing and deleting each word and measuring its importance to the sentence's output leaning towards a particular output category (Fake or Real).
 
-### Demonstration of Unsure Example 1:
+## Demonstration of Unsure Example 1:
 
 ![Example 1](./images/1.png)
 
-#### Inference:
+### Inference:
 
 1. The fact that, `US News` seems to be highlighted followed by `politics` below, we can infer that **SUBJECT** seems to be modifying results greatly, therefore a methodology which employs an embedding layer to input subjects would make it more learnable. 
 
-  **Suggestion:** Would be to employ DistlBert to extract embedding_vec over the **title+text**, and **embedding_id-->embedding_vec**, concatenate the two, and a classification layer, which is able to learn using both vectors.
+  	**Suggestion:** Would be to employ DistlBert to extract embedding_vec over the **title+text**, and 
+	**embedding_id-->embedding_vec**, concatenate the two, and a classification layer, which is able to learn using both vectors.
 
 
 2. An interesting aspect is the impact of sources and organizations, both `CNC, Korea` and `Reuters` seem to be highlighted, which would mean that names seem to be an integral aspect of fake-true news detection. 
 
-  **Suggestion:** Employing **Targetted attention through attention-masking**, would be an interesting aspect of understanding organization inference for classification by the model.
+  	**Suggestion:** Employing **Targetted attention through attention-masking**, would be an interesting aspect of understanding organization inference for classification by the model.
 
-### Demonstration of Unsure Example 2:
+## Demonstration of Unsure Example 2:
 
 ![Example 2](./images/2.png)
 
-#### Inference:
+### Inference:
 
 1. Now, here the true label is real news, we can see the model infers locational tags and particular names for potentially labelling it as Fake news. This would be due to a possible political bias within the data-distribution. 
 
 	**Suggestion:** Another masking structure may be introduced for **data cleaning**!
 
-2. **Suggestion:** Removal of proper nouns, and left-right political **bias mitigation**.
+2. Removal of proper nouns, and left-right political **bias mitigation**.
